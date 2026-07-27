@@ -1,4 +1,4 @@
-name: OneClient Release Build
+name: Echo Client Release Build
 
 
 on:
@@ -25,7 +25,7 @@ jobs:
         run: |
           VERSION=$(grep -m1 '^version' Cargo.toml | sed -E 's/.*"([^"]+)".*/\1/')
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "tag=oneclient-$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=echoclient-$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Create/ensure draft release
         env:
@@ -36,8 +36,8 @@ jobs:
           if ! gh release view "$TAG" >/dev/null 2>&1; then
             gh release create "$TAG" \
               --draft \
-              --title "OneClient $VERSION" \
-              --notes "Automated release for OneClient $VERSION."
+              --title "Echo Client $VERSION" \
+              --notes "Automated release for Echo Client $VERSION."
           fi
 
   # ---------------------------------------------------------------------------
@@ -234,7 +234,7 @@ jobs:
         id: win_upload_unsigned
         uses: actions/upload-artifact@v4
         with:
-          name: oneclient-windows-installer-unsigned
+          name: echoclient-windows-installer-unsigned
           path: ${{ steps.win_installer.outputs.path }}
 
       - name: (Windows) Submit SignPath signing request
@@ -306,7 +306,7 @@ jobs:
           deb_unique=""
           deb_matches=("$OUT_DIR"/*.deb)
           if [ -e "${deb_matches[0]:-}" ]; then
-            deb_unique="OneClient_${VERSION}_${OS_KEY}_${ARCH}.deb"
+            deb_unique="EchoClient_${VERSION}_${OS_KEY}_${ARCH}.deb"
             cp "${deb_matches[0]}" "$OUT_DIR/$deb_unique"
           fi
 
@@ -315,7 +315,7 @@ jobs:
           rpm_unique=""
           rpm_matches=("$OUT_DIR"/*.rpm)
           if [ -e "${rpm_matches[0]:-}" ]; then
-            rpm_unique="OneClient_${VERSION}_${OS_KEY}_${ARCH}.rpm"
+            rpm_unique="EchoClient_${VERSION}_${OS_KEY}_${ARCH}.rpm"
             cp "${rpm_matches[0]}" "$OUT_DIR/$rpm_unique"
           fi
 

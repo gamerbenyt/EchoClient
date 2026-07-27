@@ -1,6 +1,6 @@
 # Maintainer: Polyfrost <contact@atmofrost.org>
-pkgname=oneclient-bin
-_appname=OneClient
+pkgname=echoclient-bin
+_appname=Echo Client
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="Next-generation open source Minecraft launcher (prebuilt)"
@@ -19,11 +19,11 @@ depends=(
   'dbus'
   'gtk3'
 )
-provides=('oneclient')
-conflicts=('oneclient')
+provides=('echoclient')
+conflicts=('echoclient')
 options=('!strip')
 _debfile="${_appname}_${pkgver}_linux_x86_64.deb"
-source=("${_debfile}::${url}/releases/download/oneclient-${pkgver}/${_debfile}")
+source=("${_debfile}::${url}/releases/download/echoclient-${pkgver}/${_debfile}")
 sha256sums=('SKIP')
 
 package() {
@@ -32,5 +32,5 @@ package() {
   bsdtar -xf data.tar.*
   rm -f debian-binary control.tar.* data.tar.*
 
-  ln -s oneclient_app "$pkgdir/usr/bin/oneclient"
+  ln -s oneclient_app "$pkgdir/usr/bin/echoclient"
 }

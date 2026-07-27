@@ -85,7 +85,7 @@ impl Component for Startup {
         let (message, detail): (String, Option<String>) =
             if let Some(err) = launcher.error.as_deref() {
                 (
-                    "Couldn't start OneClient".to_string(),
+                    "Couldn't start Echo Client".to_string(),
                     Some(err.to_string()),
                 )
             } else if let Some(entry) = active {
@@ -99,7 +99,7 @@ impl Component for Startup {
             } else if launcher.ready {
                 ("Fetching versions and bundles...".to_string(), None)
             } else {
-                ("Starting OneClient...".to_string(), None)
+                ("Starting Echo Client...".to_string(), None)
             };
 
         let is_error = launcher.error.is_some();

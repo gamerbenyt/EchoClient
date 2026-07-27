@@ -2,16 +2,15 @@
 
 <img src=".github/media/RepoBanner.png" alt="Repository Banner" />
 
-# OneLauncher  |  OneClient
-The monorepo containing the code for OneLauncher, OneClient, and their core backend.
+# Echo Client
+The monorepo containing the code for Echo Client and its core backend.
 
-OneClient is a Minecraft client featuring fully 100% open-source components, offering many packaged and pre-configured mods in one click.
-OneLauncher is a WIP Minecraft launcher giving power-users the greatest customization whilst featuring a clean UI.
+Echo Client is a Minecraft client featuring fully 100% open-source components, offering many packaged and pre-configured mods in one click.
 
 </div>
 
 > [!NOTE]
-> This is **OneLauncher/OneClient v2** — a full rewrite in Rust using [Freya](https://freyaui.dev/).
+> This is **Echo Client v2** — a full rewrite in Rust using [Freya](https://freyaui.dev/).
 > All previous web-based (React / Tauri) code has been removed.
 
 ## Technologies Used
@@ -32,25 +31,25 @@ The project targets **Rust edition 2024**, so a recent Rust toolchain is require
 
 ```sh
 # Run the app
-cargo run -p oneclient_app
+cargo run -p echoclient_app
 
 # Build a release binary
-cargo build --release -p oneclient_app
+cargo build --release -p echoclient_app
 ```
 
 ### Packaging / Releasing
 
 Installers are produced with [**cargo-packager**](https://github.com/crabnebula-dev/cargo-packager)
 (the standalone bundler spun out of the Tauri bundler). Config lives in
-[`packages/oneclient_app/Cargo.toml`](./packages/oneclient_app/Cargo.toml) under
+[`packages/echoclient_app/Cargo.toml`](./packages/echoclient_app/Cargo.toml) under
 `[package.metadata.packager]`.
 
 ```sh
 cargo install cargo-packager --locked
 
 # Build the binary, then bundle it for the current OS:
-cargo build --release -p oneclient_app
-cargo packager --release -p oneclient_app --formats <targets>
+cargo build --release -p echoclient_app
+cargo packager --release -p echoclient_app --formats <targets>
 #   Windows: nsis      macOS: app,dmg      Linux: deb,appimage
 ```
 
@@ -63,10 +62,10 @@ under `[workspace.package]`. Current version: **2.0.0**.
 
 All crates live under **`packages/`** in a single Cargo workspace.
 
-- [**`oneclient_app/`**](./packages/oneclient_app/) - The Freya desktop application (UI, routes, entry point).
-- [**`oneclient_core/`**](./packages/oneclient_core/) - Launcher core. Contains the entire launcher logic.
-- [**`oneclient_db/`**](./packages/oneclient_db/) - SQLx-based database layer.
-- [**`oneclient_macro/`**](./packages/oneclient_macro/) - Macro definitions to simplify some code.
+- [**`echoclient_app/`**](./packages/echoclient_app/) - The Freya desktop application (UI, routes, entry point).
+- [**`echoclient_core/`**](./packages/echoclient_core/) - Launcher core. Contains the entire launcher logic.
+- [**`echoclient_db/`**](./packages/echoclient_db/) - SQLx-based database layer.
+- [**`echoclient_macro/`**](./packages/echoclient_macro/) - Macro definitions to simplify some code.
 - [**`polyio/`**](./packages/polyio/) - PolyIO-rs. Shared IO utilities (archives, files, system helpers).
 
 ## Code signing

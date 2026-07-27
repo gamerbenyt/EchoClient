@@ -8,9 +8,9 @@ use uuid::Uuid;
 pub const UPDATER_PUBKEY: &str = "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDFGODk3MkMyMjg0MjFDMDUKUldRRkhFSW93bktKSHpkWjNEMXNzaDVINVpCTU8xSnhuK2RnV0dTZ2FkcFJWbG1zUkhGYTNjaUkK";
 
 pub const UPDATER_ENDPOINT: &str =
-    "https://github.com/Polyfrost/OneLauncher/releases/latest/download/latest.json";
+    "https://github.com/Polyfrost/EchoClient/releases/latest/download/latest.json";
 
-pub const RELEASES_URL: &str = "https://github.com/Polyfrost/OneLauncher/releases/latest";
+pub const RELEASES_URL: &str = "https://github.com/Polyfrost/EchoClient/releases/latest";
 
 const PROGRESS_STEP: u64 = 256 * 1024;
 
@@ -49,7 +49,7 @@ async fn run_simulated_update() -> anyhow::Result<()> {
     }
 
     let progress_id = Uuid::new_v4();
-    let label = format!("Downloading OneClient {FAKE_VERSION}");
+    let label = format!("Downloading Echo Client {FAKE_VERSION}");
 
     let mut downloaded = 0u64;
     notifier.send_progress(&progress_id, &label, downloaded, FAKE_TOTAL);
@@ -62,7 +62,7 @@ async fn run_simulated_update() -> anyhow::Result<()> {
     notifier.finish_progress(
         &progress_id,
         "Finished Downloading",
-        &format!("OneClient {FAKE_VERSION} is ready — restart to apply."),
+        &format!("Echo Client {FAKE_VERSION} is ready — restart to apply."),
     );
 
     Ok(())
@@ -90,7 +90,7 @@ async fn run_check(auto_install: bool) -> anyhow::Result<()> {
         notifier.send_info(
             "Update available",
             &format!(
-                "OneClient {} is available. Download the latest package from {} to update.",
+                "Echo Client {} is available. Download the latest package from {} to update.",
                 update.version, RELEASES_URL
             ),
         );
@@ -141,7 +141,7 @@ fn check_for_update() -> anyhow::Result<Option<Update>> {
 async fn download_and_install(update: Update, notifier: NotificationService) -> anyhow::Result<()> {
     let progress_id = Uuid::new_v4();
     let version = update.version.clone();
-    let label = format!("Downloading OneClient {version}");
+    let label = format!("Downloading Echo Client {version}");
 
     notifier.send_progress(&progress_id, &label, 0, 0);
 
@@ -176,7 +176,7 @@ async fn download_and_install(update: Update, notifier: NotificationService) -> 
         notifier.finish_progress(
             &progress_id,
             "Finished Downloading",
-            &format!("OneClient {version} is ready — restart to apply."),
+            &format!("Echo Client {version} is ready — restart to apply."),
         );
         Ok(())
     })

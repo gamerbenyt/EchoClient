@@ -123,7 +123,7 @@ const SEARCH_INDEX: &[SearchItem] = &[
         id: "apis.custom_endpoint",
         icon: IconType::Globe01,
         title: "Custom API Endpoint",
-        description: "Override the default OneClient backend endpoint.",
+        description: "Override the default Echo Client backend endpoint.",
         keywords: &["endpoint", "api", "backend", "url"],
         route: Route::SettingsApis {},
     },
@@ -251,7 +251,7 @@ const SEARCH_INDEX: &[SearchItem] = &[
         id: "nav.changelog",
         icon: IconType::RefreshCcw02,
         title: "Changelog",
-        description: "View what's new in OneClient.",
+        description: "View what's new in Echo Client.",
         keywords: &["changelog", "release notes", "updates"],
         route: Route::SettingsChangelog {},
     },
@@ -669,7 +669,7 @@ impl Component for SidebarInfo {
 
         let items: [Cow<'static, str>; 4] = [
             Cow::Borrowed(concat!(
-                "OneClient v",
+                "Echo Client v",
                 env!("CARGO_PKG_VERSION"),
                 cfg_select! {
                     debug_assertions => " (debug)",

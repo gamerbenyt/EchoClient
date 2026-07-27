@@ -4,59 +4,59 @@ pub const MODRINTH_COLOR: Color = Color::from_rgb(27, 217, 106);
 pub const CURSEFORGE_COLOR: Color = Color::from_rgb(241, 100, 54);
 
 pub fn page() -> Color {
-    Color::from_rgb(17, 23, 28)
+    Color::from_rgb(13, 61, 51)
 }
 
 pub fn page_elevated() -> Color {
-    Color::from_rgb(21, 28, 34)
+    Color::from_rgb(18, 70, 57)
 }
 
 pub fn page_overlay() -> Color {
-    Color::from_argb(140, 17, 23, 28)
+    Color::from_argb(140, 13, 61, 51)
 }
 
 pub fn fg_primary() -> Color {
-    Color::from_rgb(213, 219, 255)
+    Color::from_rgb(213, 255, 245)
 }
 
 pub fn fg_primary_hover() -> Color {
-    Color::from_rgb(218, 224, 255)
+    Color::from_rgb(218, 255, 247)
 }
 
 pub fn fg_primary_pressed() -> Color {
-    Color::from_rgb(225, 229, 255)
+    Color::from_rgb(225, 255, 250)
 }
 
 pub fn fg_primary_disabled() -> Color {
-    Color::from_rgb(205, 209, 235)
+    Color::from_rgb(155, 205, 195)
 }
 
 pub fn fg_secondary() -> Color {
-    Color::from_rgb(120, 129, 141)
+    Color::from_rgb(120, 175, 165)
 }
 
 pub fn fg_secondary_hover() -> Color {
-    Color::from_rgb(95, 104, 116)
+    Color::from_rgb(95, 150, 140)
 }
 
 pub fn fg_secondary_pressed() -> Color {
-    Color::from_rgb(75, 84, 96)
+    Color::from_rgb(75, 125, 115)
 }
 
 pub fn brand() -> Color {
-    Color::from_rgb(43, 75, 255)
+    Color::from_rgb(74, 193, 159)
 }
 
 pub fn brand_hover() -> Color {
-    Color::from_rgb(40, 67, 221)
+    Color::from_rgb(65, 172, 145)
 }
 
 pub fn brand_pressed() -> Color {
-    Color::from_rgb(57, 87, 255)
+    Color::from_rgb(90, 210, 175)
 }
 
 pub fn brand_disabled() -> Color {
-    Color::from_rgb(31, 47, 129)
+    Color::from_rgb(45, 106, 90)
 }
 
 pub fn ghost_overlay() -> Color {
@@ -72,31 +72,31 @@ pub fn ghost_overlay_pressed() -> Color {
 }
 
 pub fn component_bg() -> Color {
-    Color::from_rgb(26, 34, 40)
+    Color::from_rgb(18, 70, 57)
 }
 
 pub fn component_bg_hover() -> Color {
-    Color::from_rgb(29, 36, 43)
+    Color::from_rgb(24, 80, 66)
 }
 
 pub fn component_bg_pressed() -> Color {
-    Color::from_rgb(34, 44, 53)
+    Color::from_rgb(32, 95, 80)
 }
 
 pub fn component_bg_disabled() -> Color {
-    Color::from_rgb(16, 24, 31)
+    Color::from_rgb(10, 45, 38)
 }
 
 pub fn component_border() -> Color {
-    Color::from_argb(12, 255, 255, 255)
+    Color::from_argb(12, 74, 193, 159)
 }
 
 pub fn component_border_hover() -> Color {
-    Color::from_argb(25, 255, 255, 255)
+    Color::from_argb(25, 74, 193, 159)
 }
 
 pub fn component_border_pressed() -> Color {
-    Color::from_argb(38, 255, 255, 255)
+    Color::from_argb(38, 74, 193, 159)
 }
 
 pub fn danger() -> Color {

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Release tag (e.g. oneclient-2.0.1)'
+        description: 'Release tag (e.g. echoclient-2.0.1)'
         required: true
 
 jobs:
@@ -19,10 +19,10 @@ jobs:
         id: parse
         run: |
           TAG="${{ github.event.release.tag_name || inputs.tag }}"
-          if [[ "$TAG" =~ ^oneclient-(.+)$ ]]; then
+          if [[ "$TAG" =~ ^echoclient-(.+)$ ]]; then
             echo "version=${BASH_REMATCH[1]}" >> "$GITHUB_OUTPUT"
           else
-            echo "::error::Tag '$TAG' does not match oneclient-*"
+            echo "::error::Tag '$TAG' does not match echoclient-*"
             exit 1
           fi
 
@@ -37,7 +37,7 @@ jobs:
         env:
           VERSION: ${{ needs.resolve.outputs.version }}
         run: |
-          URL="https://github.com/${{ github.repository }}/archive/refs/tags/oneclient-${VERSION}.tar.gz"
+          URL="https://github.com/${{ github.repository }}/archive/refs/tags/echoclient-${VERSION}.tar.gz"
           SHA=$(curl -sL "$URL" | sha256sum | cut -d' ' -f1)
           echo "sha256=$SHA" >> "$GITHUB_OUTPUT"
 
@@ -46,7 +46,7 @@ jobs:
           VERSION: ${{ needs.resolve.outputs.version }}
           SHA256: ${{ steps.hash.outputs.sha256 }}
         run: |
-          PKGBUILD="distribution/aur/oneclient/PKGBUILD"
+          PKGBUILD="distribution/aur/echoclient/PKGBUILD"
           sed -i "s/^pkgver=.*/pkgver=${VERSION}/" "$PKGBUILD"
           sed -i "s/^pkgrel=.*/pkgrel=1/" "$PKGBUILD"
           sed -i "s/^sha256sums=.*/sha256sums=('${SHA256}')/" "$PKGBUILD"
@@ -54,12 +54,12 @@ jobs:
       - name: Publish to AUR
         uses: KSXGitHub/github-actions-deploy-aur@v3
         with:
-          pkgname: oneclient
-          pkgbuild: distribution/aur/oneclient/PKGBUILD
+          pkgname: echoclient
+          pkgbuild: distribution/aur/echoclient/PKGBUILD
           commit_username: ${{ secrets.AUR_USERNAME }}
           commit_email: ${{ secrets.AUR_EMAIL }}
           ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-          commit_message: "oneclient ${{ needs.resolve.outputs.version }}-1"
+          commit_message: "echoclient ${{ needs.resolve.outputs.version }}-1"
 
   publish-bin:
     needs: resolve
@@ -72,7 +72,7 @@ jobs:
         env:
           VERSION: ${{ needs.resolve.outputs.version }}
         run: |
-          URL="https://github.com/${{ github.repository }}/releases/download/oneclient-${VERSION}/OneClient_${VERSION}_linux_x86_64.deb"
+          URL="https://github.com/${{ github.repository }}/releases/download/echoclient-${VERSION}/EchoClient_${VERSION}_linux_x86_64.deb"
           SHA=$(curl -sL "$URL" | sha256sum | cut -d' ' -f1)
           echo "sha256=$SHA" >> "$GITHUB_OUTPUT"
 
@@ -81,7 +81,7 @@ jobs:
           VERSION: ${{ needs.resolve.outputs.version }}
           SHA256: ${{ steps.hash.outputs.sha256 }}
         run: |
-          PKGBUILD="distribution/aur/oneclient-bin/PKGBUILD"
+          PKGBUILD="distribution/aur/echoclient-bin/PKGBUILD"
           sed -i "s/^pkgver=.*/pkgver=${VERSION}/" "$PKGBUILD"
           sed -i "s/^pkgrel=.*/pkgrel=1/" "$PKGBUILD"
           sed -i "s/^sha256sums=.*/sha256sums=('${SHA256}')/" "$PKGBUILD"
@@ -89,9 +89,9 @@ jobs:
       - name: Publish to AUR
         uses: KSXGitHub/github-actions-deploy-aur@v3
         with:
-          pkgname: oneclient-bin
-          pkgbuild: distribution/aur/oneclient-bin/PKGBUILD
+          pkgname: echoclient-bin
+          pkgbuild: distribution/aur/echoclient-bin/PKGBUILD
           commit_username: ${{ secrets.AUR_USERNAME }}
           commit_email: ${{ secrets.AUR_EMAIL }}
           ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-          commit_message: "oneclient-bin ${{ needs.resolve.outputs.version }}-1"
+          commit_message: "echoclient-bin ${{ needs.resolve.outputs.version }}-1"

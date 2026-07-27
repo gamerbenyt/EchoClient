@@ -1,6 +1,6 @@
 [package]
 name = "oneclient_app"
-description = "OneClient Freya App"
+description = "Echo Client Freya App"
 version = { workspace = true }
 license = { workspace = true }
 edition = { workspace = true }
@@ -51,8 +51,8 @@ mimalloc = "=0.1.52"
 winresource = "=0.1.31"
 
 [package.metadata.packager]
-product-name = "OneClient"
-identifier = "org.polyfrost.OneClient"
+product-name = "Echo Client"
+identifier = "org.polyfrost.EchoClient"
 category = "Game"
 publisher = "Polyfrost"
 copyright = "© 2026 Polyfrost Inc."
@@ -85,12 +85,12 @@ timestamp-url = "https://timestamp.digicert.com"
 
 [package.metadata.packager.nsis]
 preinstall-section = """
-Section "-OneClientTauriMigration"
+Section "-EchoClientTauriMigration"
   ; Stale Tauri root start-menu shortcut (this build only writes the sub-folder one).
   Delete "$SMPROGRAMS\\${PRODUCTNAME}.lnk"
-  ; Old Tauri main binary (renamed OneClient.exe -> oneclient_app.exe). Locked while
+  ; Old Tauri main binary (renamed EchoClient.exe -> oneclient_app.exe). Locked while
   ; the outdated app is running during an auto-update, so fall back to reboot removal.
-  Delete /REBOOTOK "$INSTDIR\\OneClient.exe"
+  Delete /REBOOTOK "$INSTDIR\\EchoClient.exe"
 SectionEnd
 
 Section "-VCRedist"
@@ -113,14 +113,14 @@ Section "-VCRedist"
       SetRebootFlag true
     ${EndIf}
   ${ElseIf} $PassiveMode != 1
-    MessageBox MB_OK|MB_ICONEXCLAMATION "Could not download the Microsoft Visual C++ Redistributable. OneClient may fail to start until you install it manually from https://aka.ms/vs/17/release/vc_redist.x64.exe"
+    MessageBox MB_OK|MB_ICONEXCLAMATION "Could not download the Microsoft Visual C++ Redistributable. Echo Client may fail to start until you install it manually from https://aka.ms/vs/17/release/vc_redist.x64.exe"
   ${EndIf}
   vcredist_done:
 SectionEnd
 """
 
 [package.metadata.packager.deb]
-desktop-template = "distribution/linux/org.polyfrost.oneclient.template"
+desktop-template = "distribution/linux/org.polyfrost.echoclient.template"
 
 [package.metadata.packager.appimage]
 # desktop entry generated from the deb template above via the linux config

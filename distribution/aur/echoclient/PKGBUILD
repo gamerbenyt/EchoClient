@@ -1,5 +1,5 @@
 # Maintainer: Polyfrost <contact@atmofrost.org>
-pkgname=oneclient
+pkgname=echoclient
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="Next-generation open source Minecraft launcher (built from source)"
@@ -26,13 +26,13 @@ makedepends=(
   'pkgconf'
   'python'
 )
-provides=('oneclient')
-conflicts=('oneclient-bin')
+provides=('echoclient')
+conflicts=('echoclient-bin')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/oneclient-${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/echoclient-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-_srcdir="OneLauncher-oneclient-${pkgver}"
+_srcdir="EchoClient-echoclient-${pkgver}"
 
 prepare() {
   cd "$srcdir/$_srcdir"
@@ -53,16 +53,16 @@ package() {
   local appdir="packages/oneclient_app"
 
   install -Dm755 "target/release/oneclient_app" "$pkgdir/usr/bin/oneclient_app"
-  ln -s oneclient_app "$pkgdir/usr/bin/oneclient"
+  ln -s oneclient_app "$pkgdir/usr/bin/echoclient"
 
   install -dm755 "$pkgdir/usr/share/applications"
   sed -e 's|{{exec}}|oneclient_app|g' \
-      -e 's|{{icon}}|org.polyfrost.OneClient|g' \
-      "$appdir/distribution/linux/org.polyfrost.oneclient.template" \
-      > "$pkgdir/usr/share/applications/org.polyfrost.OneClient.desktop"
+      -e 's|{{icon}}|org.polyfrost.EchoClient|g' \
+      "$appdir/distribution/linux/org.polyfrost.echoclient.template" \
+      > "$pkgdir/usr/share/applications/org.polyfrost.EchoClient.desktop"
 
-  install -Dm644 "$appdir/icons/32x32.png"    "$pkgdir/usr/share/icons/hicolor/32x32/apps/org.polyfrost.OneClient.png"
-  install -Dm644 "$appdir/icons/128x128.png"  "$pkgdir/usr/share/icons/hicolor/128x128/apps/org.polyfrost.OneClient.png"
-  install -Dm644 "$appdir/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.polyfrost.OneClient.png"
-  install -Dm644 "$appdir/icons/512x512.png"  "$pkgdir/usr/share/icons/hicolor/512x512/apps/org.polyfrost.OneClient.png"
+  install -Dm644 "$appdir/icons/32x32.png"    "$pkgdir/usr/share/icons/hicolor/32x32/apps/org.polyfrost.EchoClient.png"
+  install -Dm644 "$appdir/icons/128x128.png"  "$pkgdir/usr/share/icons/hicolor/128x128/apps/org.polyfrost.EchoClient.png"
+  install -Dm644 "$appdir/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.polyfrost.EchoClient.png"
+  install -Dm644 "$appdir/icons/512x512.png"  "$pkgdir/usr/share/icons/hicolor/512x512/apps/org.polyfrost.EchoClient.png"
 }

@@ -1,4 +1,4 @@
-name: OneClient Nightly (Unsigned)
+name: Echo Client Nightly (Unsigned)
 
 
 on:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: oneclient-nightly-${{ github.ref }}
+  group: echoclient-nightly-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -179,7 +179,7 @@ jobs:
       - name: Upload unsigned installers
         uses: actions/upload-artifact@v4
         with:
-          name: oneclient-nightly-${{ matrix.os_key }}-${{ matrix.arch }}
+          name: echoclient-nightly-${{ matrix.os_key }}-${{ matrix.arch }}
           path: dist/*
           if-no-files-found: error
           retention-days: 14

@@ -2,10 +2,10 @@
 
 The source code of this repository is licensed under the GNU General Public License, Version 3 only, which is provided in the file [LICENSE](./LICENSE), with a header provided below. Certain files in our library wrappers may be under a different license or [require credit](#additional-libraries), with their specific headers outlined in the below non-exhaustive list.
 
-## OneLauncher
+## Echo Client
 
 ```txt
-OneLauncher - Open source Rust-based Minecraft Launcher
+Echo Client - Open source Rust-based Minecraft Launcher
 Copyright (C) 2023~CURRENT  Polyfrost and Contributors
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.
@@ -16,10 +16,10 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
 You should have received a copy of the GNU General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ```
 
-## OneClient
+## Echo Client
 
 ```txt
-OneClient - A Minecraft Launcher
+Echo Client - A Minecraft Launcher
 Copyright (C) 2023~CURRENT  Polyfrost and Contributors
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.

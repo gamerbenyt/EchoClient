@@ -1,6 +1,6 @@
 [package]
 name = "oneclient_core"
-description = "OneClient launcher core"
+description = "Echo Client launcher core"
 version.workspace = true
 license.workspace = true
 edition.workspace = true
